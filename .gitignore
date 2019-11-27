@@ -22,13 +22,13 @@
 *.iml
 .idea/
 target/
-.settings/
+backend/.settings/
 # Eclipse
-.classpath
-.project
+backend/.classpath
+backend/.project
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
 # application properties
-src/main/resources/application.properties
+backend/src/resources/application.properties
