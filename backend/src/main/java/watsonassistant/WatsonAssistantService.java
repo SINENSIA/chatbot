@@ -1,5 +1,8 @@
 package watsonassistant;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ibm.cloud.sdk.core.security.Authenticator;
 import com.ibm.cloud.sdk.core.security.IamAuthenticator;
 import com.ibm.watson.assistant.v2.Assistant;
@@ -17,6 +20,12 @@ public class WatsonAssistantService {
         this.config = config;
     }
 
+    private SessionResponse createSession(Assistant service) {
+
+        CreateSessionOptions createSessionOptions = new CreateSessionOptions.Builder(config.getId()).build();
+        return service.createSession(createSessionOptions).execute().getResult();
+    }
+
     private Assistant connect() {
 
         try {
@@ -29,6 +38,29 @@ public class WatsonAssistantService {
             throw new Error(e);
         }
     }
+    WatsonAssistantMessage sendMessage(String message) throws JsonProcessingException {
 
+        try {
+            if (this.service == null) {
+                this.service = connect();
+                this.session = createSession(service);
+            }
+            ObjectMapper mapper = new ObjectMapper();
+            System.out.println(session.getSessionId());
+            MessageInput input = new MessageInput.Builder()
+                    .text(message)
+                    .build();
+            MessageOptions messageOptions = new MessageOptions.Builder()
+                    .assistantId(config.getId())
+                    .sessionId(session.getSessionId())
+                    .input(input)
+                    .build();
+            MessageResponse messageResponse = service.message(messageOptions).execute().getResult();
+            return mapper.readValue(messageResponse.toString(), WatsonAssistantMessage.class);
+        } catch (JsonMappingException e) {
+            throw new Error(e);
+        }
+
+    }
 }
 
