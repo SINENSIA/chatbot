@@ -1,4 +1,4 @@
-package main.java.watsonassistant;
+package watsonassistant;
 
 import org.springframework.web.bind.annotation.*;
 
