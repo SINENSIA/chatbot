@@ -32,4 +32,23 @@ export class ChatBoxComponent implements OnInit {
 
   }
 
+  onSubmit(query: string) {
+
+    this.message = new Message();
+    this.message.response_type = 'text';
+    this.message.text = query;
+    this.message.owner = 'Usuario';
+
+    this.history.push([this.message]);
+
+    this.messageService.sendMessage(this.message).subscribe(result => {
+
+      this.response = result;
+      this.response.map(x => x.owner = "Watson");
+      this.history.push(this.response);
+      console.log(this.history);
+    });
+
+  }
+
 }
