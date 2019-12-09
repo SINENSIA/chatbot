@@ -32,3 +32,24 @@ hs_err_pid*
 
 # application properties
 backend/src/main/resources/application.properties
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# dependencies
+/node_modules
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
