@@ -1,1 +1,46 @@
-<p>chat-box works!</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div id="chatbox">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header">Chatbox</div>
+                  <div class="card-body chat">
+                    <dl id="responseList" class="row-striped">
+                        <span>
+                          <strong><!-- Owner --> </strong>
+                          <!--<img src=" message.source "/>-->
+                          <span><!-- message.text --></span>
+                          <span><!-- message.title --></span>
+                          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            &nbsp;&nbsp;
+                            <!--<button class="btn btn-info" value="message.option.value">message.option.label</button>-->
+                          </div>
+
+                        </span>
+                    </dl>
+                    <hr/>
+                    <div class='input-group'>
+                      <input type='text' name='message' class="form-control"
+                             placeholder="Escribe para chatear...">
+
+                      <div class='input-group-append'>
+                        <button class='btn btn-primary'>Enviar
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
