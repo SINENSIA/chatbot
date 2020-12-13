@@ -31,7 +31,4 @@ ng serve
 
 ** Accede a http://localhost:4200 **
 para probar la aplicación frontend miesntras se está ejecutando la aplicación backend.
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
